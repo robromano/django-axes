@@ -1,19 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-import os
+import codecs
 from setuptools import setup, find_packages
 
-VERSION = '1.3.8'
+from axes import get_version
 
 setup(
     name='django-axes',
-    version=VERSION,
+    version=get_version(),
     description="Keep track of failed login attempts in Django-powered sites.",
     long_description=(
-        open("README.rst").read() + '\n' +
-        open("CHANGES.txt").read()),
-    keywords='authentication, django, pci, security',
+        codecs.open("README.rst", encoding='utf-8').read() + '\n' +
+        codecs.open("CHANGES.txt", encoding='utf-8').read()),
+    keywords='authentication django pci security'.split(),
     author='Josh VanderLinden, Philip Neustrom, Michael Blume, Camilo Nova',
     author_email='codekoala@gmail.com',
     maintainer='Alex Clark',
@@ -21,6 +20,7 @@ setup(
     url='https://github.com/django-pci/django-axes',
     license='MIT',
     package_dir={'axes': 'axes'},
+    install_requires=['pytz'],
     include_package_data=True,
     packages=find_packages(),
     classifiers=[
@@ -35,7 +35,6 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Topic :: Internet :: Log Analysis',
-        'Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware',
         'Topic :: Security',
         'Topic :: System :: Logging',
     ],
